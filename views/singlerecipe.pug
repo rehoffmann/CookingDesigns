@@ -1,0 +1,16 @@
+extends layout.pug
+
+block content
+    .recipe-block
+        .recipe-name
+            .item-name= recipe.name
+            .item-date= moment(recipe.date).format("MM/DD/YYYY")
+        .recipe-ingredients
+            <ul>
+                each ingredient, i in recipe.ingredientNames
+                    li= ingredient + recipe.ingredientAmounts[i]
+        .instructions
+            <ol>
+                each instruction, i in recipe.instructions
+                    li= instruction
+
