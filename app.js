@@ -3,6 +3,7 @@ const express = require ('express');
 const path = require('path');
 const bodyParser= require('body-parser');
 const home = require ('./routes/home');
+const addRecipe = require ('./routes/addrecipe');
 const app = express();
 app.locals.moment = require('moment');
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', home);
+app.use('/addrecipe', addRecipe);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+    .recipe-block
+        form(method='POST' action='/addrecipe')
+            div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', placeholder='first and last', name='name')
+
+

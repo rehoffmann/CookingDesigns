@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', async (req,res) => {
         //find all documents for class, can add query filters/regular expressions
-        const data = await recipeModel.findById("5eb02853abc03d37b0550523");
+       const data = await recipeModel.findById("5eb02853abc03d37b0550523");
         //res.send(data);
         res.render('singlerecipe', {
             title: 'Hello',
@@ -14,12 +14,12 @@ router.get('/', async (req,res) => {
         });
     });
 
-router.get('/:id', async (req, res) => {
+/*router.get('/:id', async (req, res) => {
         const data = await recipeModel.findById(req.params.id);
         //404 Not Found
         if (!data) return res.status(404).send('Not Found');
         res.send(data);
-     });
+     });*/
 
 router.post('/', async (req, res) => {
     const {error} = validateRecipe(req.body);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     res.redirect('/');
 });
 
-router.put('/:id', async (req,res) => {
+/*router.put('/:id', async (req,res) => {
     //validate, if bad entry return 400
     const {error} = validateRecipe(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -50,7 +50,7 @@ router.put('/:id', async (req,res) => {
     if (!data) return res.status(404).send('Not Found');
    
     res.send(data);
-});
+});*/
 
 router.delete('/:name', async (req,res) => {
     const data = await recipeModel.deleteMany({name: req.params.name}, {useFindAndModify: false});
